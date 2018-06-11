@@ -1,126 +1,103 @@
 $(document).ready(function() {
-/*
+
     let numWins = 0;
     let numLosses = 0;
-    let topazVal = "";
-    let emeraldVal = "";
-    let sapphireVal = "";
-    let rubyVal = "";   
-    let playerScore = 0; 
-    let count="";
-    let counter="";
-
-    // function to generate random gem values
-    let ranGemValues = function() {
-        topazVal = "";
-        emeraldVal = "";
-        sapphireVal = "";
-        rubyVal = "";
-        let gemGameVals = [];
-        let aGemVal = function() {
-            while (ranGemVal = Math.floor(Math.random() * 12) + 1) {
-                if (gemGameVals.indexOf(ranGemVal) == -1) {
-                    gemGameVals.push(ranGemVal);
-                    return ranGemVal;
-                }
-            } console.log
-
-        }
-    
-        topazVal = aGemVal();
-        console.log('topaz value this game = ' + topazVal);
+    let character = {
+            1: {name: "Ralph", healthPt: "200", attackPt: "15", ctrAttPt: "30"
+            },
+            2: {namel: "Leo", healthPt: "190", attackPt: "13", ctrAttPt: "27"
+            },
+            3: {name: "Mikey", healthPt: "180", attackPt: "11", ctrAttPt: "24"
+            },
+            4: {name: "Don", healthPt: "170", attackPt: "9", ctrAttPt: "21"
+            },
+            5: {name: "Splinter", healthPt: "160", attackPt: "7", ctrAttPt: "18"
+            },
+            6: {name: "Casey", healthPt: "150", attackPt: "5", ctrAttPt: "15"
+            },
+            7: {name: "Shredder", healthPt: "210", attackPt: "14", ctrAttPt: "35"
+            },
+            8: {name: "Krang", healthPt: "195", attackPt: "10", ctrAttPt: "32"
+            },
+            9: {name: "Bebop", healthPt: "185", attackPt: "8", ctrAttPt: "29"
+            },
+            10: {name: "Rocksteady", healthPt: "175", attackPt: "6", ctrAttPt: "26"
+            },
+            11: {name: "Slash", healthPt: "165", attackPt: "4", ctrAttPt: "23"
+            },
+            12: {name: "Baxtor Fly", healthPt: "155", attackPt: "3", ctrAttPt: "21"
+            }
         
-        emeraldVal = aGemVal();
-        console.log('emerald value this game  = ' + emeraldVal);
-          
-        rubyVal = aGemVal();
-        console.log('ruby value this game = ' + rubyVal);
-      
-        sapphireVal = aGemVal();
-        console.log('sapphire value this game = ' + sapphireVal);
-      
-        console.log(gemGameVals);  
     }
-
-    // start timer
-    function timer() {
-        console.log('timer ran mofo!');
-        count=count-1;
-        $('#timer').html(count + ' seconds');
-        if (count <= 0) {
-            numLosses++;
-            $('#game-end').html('Your Time has passed! You have not met the price the Universe demands.');
-            $('#numLosses').html(numLosses);
-            clearInterval(counter)
-        }
-    }
+   
 
     // start new game
     let newGame = function() {   
-        // reset player score for new game 
-        playerScore = 0;
-        $('#playerTotal').html(playerScore);
-        // generate new random number
-        randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-        $("#gameRanNum").html(randomNumber);
-        // generate new gem values
-        ranGemValues();
-        console.log('random number is = ' + randomNumber)
-        console.log(`playerScore: ${playerScore}  randomNumber: ${randomNumber}`);
-        $('#game-end').html("");
-        clearInterval(counter);
-        count=60
-        counter=setInterval(timer, 1000);
-        $('#timer').html(count + ' seconds');
+        // reset characters health and attack to 150
+        character.name.healthPt = "";
+        character.name.attackPt = "";
+        
+        // return charactors to their team positions
+
+
+        // reset characters attack to starting attack
+        
     }
 
-    $('button').click(newGame);
-
-    // game win function if player score equals random game number
+    // game win function if random fighters HP at 0 or less
     let gameTally = function()  {
-        if (playerScore === randomNumber) {
+        if (ranfighter1 <= 0 && ranfighter2 <= 0) {
             numWins++;
             console.log('you win');
             $('#numWins').html(numWins);
-            $('#game-end').html('You have met the offering demands of the Universe! The fates favor you!');
-            clearInterval(counter);
-        } else if (playerScore > randomNumber) {
+            $('#game-end').html('You Win!');
+            newGame();
+        } else if (playerPick <= 0) {
             numLosses++;
             console.log('you loss');
             $('#numLosses').html(numLosses);
-            $('#game-end').html('You have NOT met the demands of the Universe! You! Are! Not! Worthy!');
-            clearInterval(counter);
+            $('#game-end').html('You Loss!');
+            newGame();
         }
     } 
 
+    // button click will start game
+    $('#newgame').click(newGame);
 
-    // on gem click the gem value is added to player total
-    $('#topaz').click(function() {
-        playerScore+=topazVal;
-        $('#playerTotal').html(playerScore);
-        console.log(`playerScore: ${playerScore}`);
-        gameTally();
-    });
+    // player selects character as playerPick
+    //$('#fighter-pic').click(function() {
+        
+        
+        
+        // playerPick hidden from current section
 
-    $('#emerald').click(function() {
-        playerScore+=emeraldVal;
-        $('#playerTotal').html(playerScore);
-        console.log(`playerScore: ${playerScore}`);
-        gameTally();
-    });
+        // playerPick visible in battle section
 
-    $('#ruby').click(function() {
-        playerScore+=rubyVal;
-        $('#playerTotal').html(playerScore);
-        console.log(`playerScore: ${playerScore}`);
-        gameTally();
-    });
+        // playerPick stats appear below character
 
-    $('#sapphire').click(function() {
-        playerScore+=sapphireVal;
-        $('#playerTotal').html(playerScore);
-        console.log(`playerScore: ${playerScore}`);
-        gameTally();
-    });
-   */
+        // computer generates to random opposing characters
+
+        // when player presses attack button
+
+            // for each playerPick attack... 
+            
+            // loop attack on random fighter
+
+            // random figther 1 counter attack decreases playerPick HP
+
+            // add playerPick base attack to the attack value
+
+                // if random fighter 1 PH <= 0, then loop attack on random fighter 2
+
+                    // random fighter 1 counter attack set to 0
+
+                    // random fighter 2 counter attack decreases playerPick HP
+
+                    // add playerPick base attack to the attack value
+
+        // call 'gameTally' function
+                    
+    
+  //  });
+
 });

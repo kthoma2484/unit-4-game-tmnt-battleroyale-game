@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Infant|Fanwood+Text|Noticia+Text|Song+Myung" rel="stylesheet">    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Concert+One|Permanent+Marker" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -28,15 +29,43 @@
         <section class="main-sec">
             
             <section class="left-col pop-out tablet">
-                <p>The Good Dudes</p>
-                <img id="michaelangelo" src="assets/images/Michaelangelo.jpg" alt="orange turtle">
-                <img id="raphael" src="assets/images/Raphael.jpg" alt="red turtle">
-                <img id="leonardo" src="assets/images/Leonardo.jpg" alt="purple turtle">
-                <img id="donatello" src="assets/images/Donatello.jpg" alt="blue turtle">
-                <img id="master-splinter" src="assets/images/Master Splinter.jpg" alt="the rat">
+                
+                <p class="teams">The Good Dudes</p>
+                
+                <section class="team-secs">
+                   <div class="fighter-pic">
+                        <img id="raphael" src="assets/images/Raphael.jpg" alt="red turtle">
+                        <p class="fighter-name">Raphael</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                        <img id="leonardo" src="assets/images/Leonardo.jpg" alt="purple turtle">
+                        <p class="fighter-name">Leonardo</p>
+                    </div>
+                    
+                    <div class="fighter-pic">
+                        <img id="michaelangelo" src="assets/images/Michaelangelo.jpg" alt="orange turtle">
+                        <p class="fighter-name">Michaelangelo</p>
+                    </div>
+        
+                    <div class="fighter-pic">
+                        <img id="donatello" src="assets/images/Donatello.jpg" alt="blue turtle">
+                        <p class="fighter-name">Donatello</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                        <img id="master-splinter" src="assets/images/Master Splinter.jpg" alt="the rat">
+                        <p class="fighter-name">Master Splinter</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                        <img id="casey" src="assets/images/Casey.jpg" alt="Casey">
+                        <p class="fighter-name">Casey</p>
+                    </div>
+            </section>
             </section>
             
-            <section class="middle-col pop-out tablet">
+            <section class="middle-col pop-out tablet teams">
                 
                 <section>
                     <p>Wins: </p>
@@ -47,21 +76,67 @@
 
                 <section>
                     <p id="game-end"></p>
-                    <button>New Game Start</button>
+                    <button id="newgame">New Game Start</button>
+                </section>
+                
+                <section class="battle">
+
+                    <p>Battle Ground!</p>
+
+                    <section class="show-battle">
+
+                    </section>
+                    
+                    <button id="attack">Attack!</button>
+
                 </section>
 
             </section>
 
             <section class="right-col pop-out tablet">
-                <p>The Bad Dudes</p>
-                <img id="shredder" src="assets/images/Shredder.jpg" alt="Shredder">
-                <img id="bebop" src="assets/images/Bebop.jpg" alt="Bebop">
+                
+                <p class="teams">The Bad Dudes</p>
+                
+                <section class="team-secs">
+
+                    <div class="fighter-pic">
+                        <img id="shredder" src="assets/images/Shredder.jpg" alt="Shredder">
+                        <p class="fighter-name">Shredder</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                            <img id="krang" src="assets/images/Krang.jpg" alt="Krang">
+                            <p class="fighter-name">Krang</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                        <img id="bebop" src="assets/images/Bebop.jpg" alt="Bebop">
+                        <p class="fighter-name">Bebop</p>
+                    </div>
+
+                    <div class="fighter-pic">
+                        <img id="rocksteady" src="assets/images/Rocksteady.jpg" alt="Rocksteady">
+                        <p class="fighter-name">Rocksteady</p>
+                    </div>                    
+                    
+                    <div class="fighter-pic">
+                        <img id="slash" src="assets/images/Slash.jpg" alt="Slash">
+                        <p class="fighter-name">Slash</p>
+                    </div>
+                    
+                    <div class="fighter-pic">
+                        <img id="fly" src="assets/images/Stockman Fly.jpg" alt="Baxtor Fly">
+                        <p class="fighter-name">Baxtor Fly</p>
+                    </div>
+                    
+                </section>
+
             </section>   
 
         </section>
         
         <section class="narrative">
-                <p class="hide-me">Shredder and his minions have sworn to take over the city of New York. Our only hope lays with that of the City defenders. You must protect the city through battle between the 'Good Dudes' vs the 'Bad Dudes'. 
+                <p>Shredder and his minions have sworn to take over the city of New York. Our only hope lays with that of the City defenders. You must protect the city through battle between the 'Good Dudes' vs the 'Bad Dudes'. 
                     <br><br>Who will win in the battle royale?</p>
            
             <!-- <p class="hide-me" style="text-decoration:underline;">You will be given a random number at the start of the game.</p> 
