@@ -89,6 +89,7 @@ img:hover {
 
 .right-col {
     flex: 1;
+    flex-wrap: wrap;
     background-color: rgba(142, 151, 12, 0.4);
     text-align: center;
 }

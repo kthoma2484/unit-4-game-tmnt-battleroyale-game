@@ -29,6 +29,7 @@ $(document).ready(function() {
             }  
     }
     let playerSelection = {};
+    let attackerArray = [];
 
     // start new game
     let newGame = function() {   
@@ -67,21 +68,45 @@ $(document).ready(function() {
         $(target).appendTo(".player-battle");
         playerSelection = character[$(target).attr("data-character")];
         console.log(playerSelection);
-        $(".stats").html('HP = ' + playerSelection.healthPt + ' / ' + 'Attack Pts = ' + playerSelection.attackPt);
+        $(".p-stats").html('HP = ' + playerSelection.healthPt + ' / ' + 'Attack Pts = ' + playerSelection.attackPt);
+        // computer picks 2 random attackers
         if (playerSelection.virtue === "good") {
-            ranAttacker1 = Math.floor((Math.random() *(13 - 7) + 7));
-            return;
+            ranAttacker1 = Math.floor((Math.random() *(12 - 7) + 7));
+            attSelection1 = character[ranAttacker1];
+            $("[data-character='" + ranAttacker1 +"']").appendTo(".computer-battle");
+            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Attack Pts = ' + attSelection1.attackPt);
+            attackerArray.push(ranAttacker1);
+            while (ranAttacker2 = Math.floor((Math.random() *(12 - 7) + 7))) {
+                if (!attackerArray.indexOf(ranAttacker2)) {
+                    return;
+                } else {
+                    attSelection2 = character[ranAttacker2];
+                    $("[data-character='" + ranAttacker2 +"']").appendTo(".computer-battle");
+                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Attack Pts = ' + attSelection2.attackPt);
+                    if (attackerArray.indexOf(ranAttacker1) == -1 && attackerArray.indexOf(ranAttacker2) == -1);
+                    return;
+                }
+            }
+            
         } else if (playerSelection.virtue === "bad") {
-            ranAttacker1 = Math.floor((Math.random() *(7 - 1) + 1));
-            console.log(ranAttacker1);
+            ranAttacker1 = Math.floor((Math.random() *(6 - 1) + 1));
+            attSelection1 = character[ranAttacker1];
+            $("[data-character='" + ranAttacker1 +"']").appendTo(".computer-battle");
+            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Attack Pts = ' + attSelection1.attackPt);
+            } while (ranAttacker2 = Math.floor((Math.random() *(6 - 1) + 1))) {
+                if (!attackerArray.indexOf(ranAttacker2)) {
+                    return;
+                } else {
+                    attSelection2 = character[ranAttacker2];
+                    $("[data-character='" + ranAttacker2 +"']").appendTo(".computer-battle");
+                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Attack Pts = ' + attSelection2.attackPt);
+                    if (attackerArray.indexOf(ranAttacker1) == -1 && attackerArray.indexOf(ranAttacker2) == -1);
+                    return;
+                }
         }
-    }
-    
-    // computer selects to random attackers
-    let computerPick = function () {
         
     }
-
+    
     // button click will start game
     $('#newgame').click(newGame);
 
