@@ -110,10 +110,17 @@ button:hover {
 }
 
 .battle {
-    margin: 10px;
+    display: flex;
     background-color: rgba(190, 29, 17, 0.4);
 }
 
+.player-battle,
+.computer-battle {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
 .narrative {
     background-color: rgba(142, 151, 12, 0.4);
     text-shadow: 2px 2px navy;

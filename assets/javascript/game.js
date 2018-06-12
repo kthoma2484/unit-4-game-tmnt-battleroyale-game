@@ -3,33 +3,32 @@ $(document).ready(function() {
     let numWins = 0;
     let numLosses = 0;
     let character = {
-            1: {name: "Ralph", healthPt: "200", attackPt: "15", ctrAttPt: "30"
+            1: {name: "Ralph", healthPt: "200", attackPt: "15", ctrAttPt: "30", virtue: "good"
             },
-            2: {namel: "Leo", healthPt: "190", attackPt: "13", ctrAttPt: "27"
+            2: {name: "Leo", healthPt: "190", attackPt: "13", ctrAttPt: "27", virtue: "good"
             },
-            3: {name: "Mikey", healthPt: "180", attackPt: "11", ctrAttPt: "24"
+            3: {name: "Mikey", healthPt: "180", attackPt: "11", ctrAttPt: "24", virtue: "good"
             },
-            4: {name: "Don", healthPt: "170", attackPt: "9", ctrAttPt: "21"
+            4: {name: "Don", healthPt: "170", attackPt: "9", ctrAttPt: "21", virtue: "good"
             },
-            5: {name: "Splinter", healthPt: "160", attackPt: "7", ctrAttPt: "18"
+            5: {name: "Splinter", healthPt: "160", attackPt: "7", ctrAttPt: "18", virtue: "good"
             },
-            6: {name: "Casey", healthPt: "150", attackPt: "5", ctrAttPt: "15"
+            6: {name: "Casey", healthPt: "150", attackPt: "5", ctrAttPt: "15", virtue: "good"
             },
-            7: {name: "Shredder", healthPt: "210", attackPt: "14", ctrAttPt: "35"
+            7: {name: "Shredder", healthPt: "210", attackPt: "14", ctrAttPt: "35", virtue: "bad"
             },
-            8: {name: "Krang", healthPt: "195", attackPt: "10", ctrAttPt: "32"
+            8: {name: "Krang", healthPt: "195", attackPt: "10", ctrAttPt: "32", virtue: "bad"
             },
-            9: {name: "Bebop", healthPt: "185", attackPt: "8", ctrAttPt: "29"
+            9: {name: "Bebop", healthPt: "185", attackPt: "8", ctrAttPt: "29", virtue: "bad"
             },
-            10: {name: "Rocksteady", healthPt: "175", attackPt: "6", ctrAttPt: "26"
+            10: {name: "Rocksteady", healthPt: "175", attackPt: "6", ctrAttPt: "26", virtue: "bad"
             },
-            11: {name: "Slash", healthPt: "165", attackPt: "4", ctrAttPt: "23"
+            11: {name: "Slash", healthPt: "165", attackPt: "4", ctrAttPt: "23", virtue: "bad"
             },
-            12: {name: "Baxtor Fly", healthPt: "155", attackPt: "3", ctrAttPt: "21"
-            }
-        
+            12: {name: "Baxtor Fly", healthPt: "155", attackPt: "3", ctrAttPt: "21", virtue: "bad"
+            }  
     }
-   
+    let playerSelection = {};
 
     // start new game
     let newGame = function() {   
@@ -61,16 +60,39 @@ $(document).ready(function() {
         }
     } 
 
+    // playerPick hidden from current section
+    let playerPick = function (target) {
+        // player pick relocated from original location to battlefield
+        $(target).remove();  
+        $(target).appendTo(".player-battle");
+        playerSelection = character[$(target).attr("data-character")];
+        console.log(playerSelection);
+        $(".stats").html('HP = ' + playerSelection.healthPt + ' / ' + 'Attack Pts = ' + playerSelection.attackPt);
+        if (playerSelection.virtue === "good") {
+            ranAttacker1 = Math.floor((Math.random() *(13 - 7) + 7));
+            return;
+        } else if (playerSelection.virtue === "bad") {
+            ranAttacker1 = Math.floor((Math.random() *(7 - 1) + 1));
+            console.log(ranAttacker1);
+        }
+    }
+    
+    // computer selects to random attackers
+    let computerPick = function () {
+        
+    }
+
     // button click will start game
     $('#newgame').click(newGame);
 
     // player selects character as playerPick
-    //$('#fighter-pic').click(function() {
-        
-        
-        
-        // playerPick hidden from current section
+    $('.fighter-pic').click(function() {
+        playerPick(this);
+        computerPick();
+    });   
 
+
+    
         // playerPick visible in battle section
 
         // playerPick stats appear below character
@@ -98,6 +120,6 @@ $(document).ready(function() {
         // call 'gameTally' function
                     
     
-  //  });
+  
 
 });
