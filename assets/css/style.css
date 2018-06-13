@@ -87,6 +87,12 @@ img:hover {
     box-shadow: 10px 10px 10px lawngreen;
 }
 
+#x-out {
+    font-size: 200px;
+    color: red;
+    font-weight: bolder;
+}
+
 .right-col {
     flex: 1;
     flex-wrap: wrap;

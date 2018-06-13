@@ -29,7 +29,10 @@ $(document).ready(function() {
             }  
     }
     let playerSelection = {};
+    let attSelection1 = {};
+    let attSelection2 = {};
     let attackerArray = [];
+    let choiceMade = false;
 
     // start new game
     let newGame = function() {   
@@ -73,38 +76,55 @@ $(document).ready(function() {
         if (playerSelection.virtue === "good") {
             ranAttacker1 = Math.floor((Math.random() *(12 - 7) + 7));
             attSelection1 = character[ranAttacker1];
+            console.log(attSelection1)
             $("[data-character='" + ranAttacker1 +"']").appendTo(".computer-battle");
-            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Attack Pts = ' + attSelection1.attackPt);
+            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Counter Attack Pts = ' + attSelection1.ctrAttPt);
             attackerArray.push(ranAttacker1);
+            // the second attacker is added only if first attacker not already chosen
             while (ranAttacker2 = Math.floor((Math.random() *(12 - 7) + 7))) {
                 if (!attackerArray.indexOf(ranAttacker2)) {
-                    return;
-                } else {
+                    console.log('duplicate pick ' + ranAttacker2);
+                    if (ranAttacker1 === ranAttacker2) {
+                        ranAttacker2 = Math.floor((Math.random() *(12 - 7) + 7));
+                        console.log('second random attempt ' + ranAttacker2)
+                    }
+                }
+                
+                else {
                     attSelection2 = character[ranAttacker2];
+                    console.log(attSelection2)
                     $("[data-character='" + ranAttacker2 +"']").appendTo(".computer-battle");
-                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Attack Pts = ' + attSelection2.attackPt);
+                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Counter Attack Pts = ' + attSelection2.ctrAttPt);
                     if (attackerArray.indexOf(ranAttacker1) == -1 && attackerArray.indexOf(ranAttacker2) == -1);
-                    return;
+                        return;
                 }
             }
-            
-        } else if (playerSelection.virtue === "bad") {
+        }    
+        if (playerSelection.virtue === "bad") {
             ranAttacker1 = Math.floor((Math.random() *(6 - 1) + 1));
             attSelection1 = character[ranAttacker1];
+            console.log(attSelection1);
             $("[data-character='" + ranAttacker1 +"']").appendTo(".computer-battle");
-            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Attack Pts = ' + attSelection1.attackPt);
-            } while (ranAttacker2 = Math.floor((Math.random() *(6 - 1) + 1))) {
+            $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Counter Attack Pts = ' + attSelection1.ctrAttPt);
+            attackerArray.push(ranAttacker1);
+            while (ranAttacker2 = Math.floor((Math.random() *(6 - 1) + 1))) {
                 if (!attackerArray.indexOf(ranAttacker2)) {
-                    return;
-                } else {
+                    console.log('duplicate pick ' + ranAttacker2);
+                    if (ranAttacker1 === ranAttacker2) {
+                        ranAttacker2 = Math.floor((Math.random() *(6 - 1) + 1));
+                        console.log('second random attempt ' + ranAttacker2)
+                    }
+                } 
+                else {
                     attSelection2 = character[ranAttacker2];
+                    console.log(attSelection2);
                     $("[data-character='" + ranAttacker2 +"']").appendTo(".computer-battle");
-                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Attack Pts = ' + attSelection2.attackPt);
+                    $(".c2-stats").html(attSelection2.name + ' / HP = ' + attSelection2.healthPt + ' / Counter Attack Pts = ' + attSelection2.ctrAttPt);
                     if (attackerArray.indexOf(ranAttacker1) == -1 && attackerArray.indexOf(ranAttacker2) == -1);
-                    return;
+                        return;
                 }
-        }
-        
+            }
+        }    
     }
     
     // button click will start game
@@ -113,36 +133,35 @@ $(document).ready(function() {
     // player selects character as playerPick
     $('.fighter-pic').click(function() {
         playerPick(this);
-        computerPick();
+        $('.fighter-pic').off("click");
     });   
-
-
     
-        // playerPick visible in battle section
+    // turns click even off to prevent more than one player selection
 
-        // playerPick stats appear below character
-
-        // computer generates to random opposing characters
-
-        // when player presses attack button
-
-            // for each playerPick attack... 
-            
-            // loop attack on random fighter
-
-            // random figther 1 counter attack decreases playerPick HP
-
-            // add playerPick base attack to the attack value
-
-                // if random fighter 1 PH <= 0, then loop attack on random fighter 2
-
-                    // random fighter 1 counter attack set to 0
-
-                    // random fighter 2 counter attack decreases playerPick HP
-
-                    // add playerPick base attack to the attack value
-
-        // call 'gameTally' function
+    // for each attack button press...
+    $('button').click(function() {
+        playerSelection.healthPt = playerSelection.healthPt - attSelection1.ctrAttPt;
+        console.log('player health= ' + playerSelection.healthPt);
+        $(".p-stats").html('HP = ' + playerSelection.healthPt + ' / ' + 'Counter Attack Pts = ' + playerSelection.attackPt);
+        attSelection1.healthPt = attSelection1.healthPt - playerSelection.attackPt;
+        $(".c1-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Counter Attack Pts = ' + attSelection1.ctrAttPt);
+        playerSelection.attackPt;
+        console.log(playerSelection.attackPt)
+        // when attacker 1 defeated..
+        if (attSelection1.healthPt <= 0) {
+            $(".c1-stats").html(attSelection1.name + ' has been defeated!');
+            $(".c1-stats").remove(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Counter Attack Pts = ' + attSelection1.ctrAttPt);
+            playerSelection.healthPt = playerSelection.healthPt - attSelection2.ctrAttPt;
+            console.log('player health= ' + playerSelection.healthPt);
+            $(".p-stats").html('HP = ' + playerSelection.healthPt + ' / ' + 'Counter Attack Pts = ' + playerSelection.attackPt);
+            attSelection2.healthPt = attSelection2.healthPt - playerSelection.attackPt;
+            $(".c2-stats").html(attSelection1.name + ' / HP = ' + attSelection1.healthPt + ' / Counter Attack Pts = ' + attSelection1.ctrAttPt);
+            playerSelection.attackPt = playerSelection.attackPt + playerSelection.attackPt;
+            console.log(playerSelection.attackPt)
+        }
+    });
+    
+    // call 'gameTally' function
                     
     
   
