@@ -101,8 +101,10 @@ $(document).ready(function() {
     }
     
     // player selects character as playerPick
+    
     let choseFighter = function () {
-    $('.fighter-pic').click(function() {
+        $('.fighter-pic').off("click");
+        $('.fighter-pic').click(function() {
         playerPick(this);
         // turns click even off to prevent more than one player selection
         $('.fighter-pic').off("click");
@@ -194,16 +196,12 @@ $(document).ready(function() {
         // return charactors to their team positions
         $('.good-dude').appendTo('.good-team');
         $('.bad-dude').appendTo('.bad-team');
-        choseFighter(); 
-    //   attackMode();
+        choseFighter();
     }
     
     // button click will start game
     $('.newgame').click(newGame);
-    console.log('do somethan')
-    // button click will choose fighter
-    choseFighter();
-   // attackMode();
+    console.log('need to select character first');
 
 
 });

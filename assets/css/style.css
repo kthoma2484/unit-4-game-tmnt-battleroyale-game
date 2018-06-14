@@ -143,11 +143,6 @@ button:hover {
     padding: 10px;
 }
 
-
-.show-me {
-    display: none;
-}
-
 /* ----Screens 1024px or less -----  */
 
 @media (max-width: 1024px) {
@@ -281,8 +276,5 @@ button:hover {
         display: none;
     }
     
-    .show-me {
-        display: inline;
-    }
 }
 
