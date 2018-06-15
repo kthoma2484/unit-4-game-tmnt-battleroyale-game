@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
     let numWins = 0;
     let numLosses = 0;
     let character = {
@@ -35,6 +35,17 @@ $(document).ready(function() {
     let attSelection2 = {};
     let attackerArray = [];
     
+    // plays theme song
+    let themeSong = document.getElementById('page-audio');
+  
+    $('.play-audio').click(function(){
+        themeSong.play();
+    });
+    
+    $('.pause-audio').click(function(){
+        themeSong.pause();
+    });
+ 
   
     // player selected and relocated to battlefield & 2 attackers selected and relocated to battlefield
     let playerPick = function (target) {
